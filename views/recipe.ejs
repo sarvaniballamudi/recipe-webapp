@@ -1,0 +1,45 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Explore Latest</li>
+  </ol>
+</nav>
+
+<% if(resultRecipe != null) { %>
+
+    <div class="row">
+        <div class="col-12 col-md-8">
+          <div class="row">
+            <div class="col-12">
+              <h1><%- resultRecipe.name %></h1>
+              <span class="badge bg-success rounded-pill"><%- resultRecipe.category %></span>
+              <span class="badge bg-success rounded-pill">Latest</span>
+            </div>
+            <div class="col-12">
+                <h2>Ingredients</h2>
+                <ul class="list-group list-group-flush">
+                    <% resultRecipe.ingredients.forEach(ingredient =>{ %>
+                    <li class="list-group-item"><%= ingredient %></li>
+                    <% }) %>
+                </ul> 
+                <h2>How To</h2>
+                <ol class="list-group list-group-numbered list-group-flush">
+                    <% resultRecipe.instructions.forEach((instruction) => { %>
+                    <li class="list-group-item"><%= instruction %></li>
+                    <% }) %>
+                </ol> 
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <img src="/images/uploads/<%- resultRecipe.image %>" class="img-fluid sticky-top" style="top: 20px;" alt="<%- resultRecipe.name %>">
+        </div>
+    </div>
+
+<% } else { %>
+  <div class="row">
+    <div class="col-12">
+      <h1>No recipes yet!</h1>
+    </div>
+  </div>
+<% } %>
